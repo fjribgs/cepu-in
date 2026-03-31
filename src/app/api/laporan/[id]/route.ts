@@ -2,8 +2,8 @@ import { NextResponse } from "next/server";
 import { db } from "../../../../../lib/db";
 import cloudinary from "../../../../../lib/cloudinary";
 import { getSession } from "../../../../../lib/auth";
-import { Status } from "@prisma/client";
-
+import { Status } from "@prisma/client"; 
+ 
 // GET | Get laporan by id
 export async function GET(
   request: Request,
