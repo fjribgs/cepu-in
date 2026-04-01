@@ -23,7 +23,7 @@ export default function Navbar() {
 
     return (
         <div>
-            <nav className="flex sticky font-nunito border border-(--color-darker) rounded-[13px] px-5 py-3 justify-between items-center mx-8 max-sm:mx-4 mt-5">
+            <nav className="flex fixed font-nunito bg-white border border-(--color-darker) rounded-[13px] px-5 py-3 justify-between items-center left-12 right-12 max-sm:left-4 max-sm:right-4 mt-5">
                 <Image src="/logo.svg" width={120} height={260} alt="Logo CepuIn" className="h-auto"/>
                 <div className="flex justify-between">
                     <ul className="flex items-center gap-5 text-[13px] 2xl:text-[16px]
@@ -40,14 +40,15 @@ export default function Navbar() {
                                 </Link>
                             </li>
                         ))}
-                        <Button href="/login" label="Masuk"/>
+                        <Button href="/login" label="Masuk" primary/>
                     </ul>
                 </div>
                 <button onClick={handleSidebar} className="max-sm:block hidden">
                     <Image src="/sidebar.svg" alt="" width={20} height={2}/>
                 </button>
             </nav>
-            <aside className={`border flex-col gap-5 fixed right-4 rounded-lg top-25 px-3 py-3 hidden max-sm:flex transition-all duration-200 ease-in ${isSidebarOpened ? 'translate-x-0' : 'translate-x-full'}`}>
+
+            <aside className={`border bg-white flex-col gap-5 fixed right-4 rounded-lg top-25 px-3 py-3 hidden max-sm:flex transition-all duration-200 ease-in ${isSidebarOpened ? 'translate-x-0' : 'translate-x-full'}`}>
                 <ul className="flex flex-col gap-2">
                     {menuItems.map((item) => (
                         <li key={item.id} className={`group ${item.href == pathname ? "bg-(--color-light)" : "bg-transparent"} rounded-md px-4 py-2`}>
@@ -59,7 +60,7 @@ export default function Navbar() {
                 </ul>
                 <div className="h-0.5 mx-3 bg-black/30"></div>
                 <div className="mb-1 mx-2">
-                    <Button href="/login" label="Masuk"/>
+                    <Button href="/login" label="Masuk" primary/>
                 </div>
             </aside>
         </div>
