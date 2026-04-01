@@ -1,6 +1,6 @@
 export default function Leaderboard() {
   return (
-    <div className="flex">
+    <div className="flex h-screen">
       
     </div>
   );

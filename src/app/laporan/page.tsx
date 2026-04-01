@@ -1,6 +1,6 @@
 export default function Laporan() {
   return (
-    <div className="flex">
+    <div className="flex h-screen">
       
     </div>
   );
