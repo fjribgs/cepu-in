@@ -25,24 +25,24 @@ export default function Home() {
           </div>
 
           <div>
-            <Image src={`/hero-img.svg`} width={420} height={420} alt="" className="max-sm:max-w-80 2xl:w-140"/>
+            <Image src={`/hero-img.svg`} width={420} height={420} alt="" className="max-sm:max-w-80 2xl:w-140 h-auto"/>
           </div>
         </div>
 
       </div>
 
-      <div className="flex flex-col items-center justify-center h-screen max-sm:h-[120vh] gap-18 max-sm:gap-10 text-center">
-        <div id="cara-kerja"  className="flex flex-col items-center gap-1">
-          <h2 className="text-4xl 2xl:text-7xl font-nunito font-bold text-(--color-normal-hover)">Cara Kerja</h2>
-          <p className="font-light text-md max-sm:text-[12.5px] 2xl:text-xl">Bantu RT/RW menjaga kenyamanan lingkungan. Hanya dengan 3 langkah!</p>
+      <div id="cara-kerja" className="flex flex-col items-center justify-center h-screen max-sm:h-[120vh] gap-20 max-sm:gap-10 text-center">
+        <div className="flex flex-col items-center gap-2">
+          <h2 className="text-5xl 2xl:text-6xl font-nunito font-bold text-(--color-normal-hover)">Cara Kerja</h2>
+          <p className="font-light text-md max-sm:text-[12.5px] max-sm:max-w-75 2xl:text-xl">Bantu RT/RW menjaga kenyamanan lingkungan. Hanya dengan tiga langkah!</p>
         </div>
 
         <div className="flex">
-          <ul className="flex max-sm:flex-col gap-12 2xl:gap-30 text-(--color-normal-hover)">
+          <ul className="flex max-sm:flex-col gap-12 2xl:gap-35 text-(--color-normal-hover)">
             {caraKerjaItems.map((item) => (
               <li key={item.id}>
                   <div className="flex flex-col items-center max-w-60 text-center gap-2 2xl:gap-5">
-                    <Image src={item.icon} alt="Tambahkan" width={120} height={120} className="bg-(--color-light) p-3 rounded-4xl mb-2 2xl:w-35"/>
+                    <Image src={item.icon} alt="Tambahkan" width={120} height={120} className="bg-(--color-light) p-3 rounded-4xl mb-2 2xl:w-35 h-auto"/>
 
                     <h3 className="text-2xl 2xl:text-4xl font-nunito font-bold">{item.label}</h3>
 

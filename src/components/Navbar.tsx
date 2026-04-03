@@ -23,8 +23,9 @@ export default function Navbar() {
 
     return (
         <div>
-            <nav className="flex fixed font-nunito bg-white border border-(--color-darker) rounded-[13px] px-5 py-3 justify-between items-center left-12 right-12 max-sm:left-4 max-sm:right-4 mt-5">
-                <Image src="/logo.svg" width={120} height={260} alt="Logo CepuIn" className="h-auto"/>
+            <nav className="flex fixed font-nunito bg-white border border-(--color-darker) rounded-[13px] px-5 py-3 justify-between items-center left-12 right-12 max-sm:left-4 max-sm:right-4 mt-5 z-100">
+                <Image src="/logo.svg" width={120} height={40} alt="Logo CepuIn" className="h-auto 2xl:w-40"/>
+
                 <div className="flex justify-between">
                     <ul className="flex items-center gap-5 text-[13px] 2xl:text-[16px]
                     [&>li]:hover:font-bold 
@@ -34,15 +35,18 @@ export default function Navbar() {
                     [&>li]:hover:cursor-pointer
                     max-sm:hidden">
                         {menuItems.map((item) => (
-                            <li key={item.id} className={`group ${item.href == pathname ? "font-bold" : "font-medium"}`}>
+                            <li key={item.id} className={`group ${item.href == pathname ? "font-bold" : "font-medium"} 2xl:text-[18px]`}>
                                 <Link href={item.href}>
                                     {item.label}
                                 </Link>
                             </li>
                         ))}
-                        <Button href="/login" label="Masuk" primary/>
+                        <div className="2xl:my-1.5">
+                            <Button href="/login" label="Masuk" primary/>
+                        </div>
                     </ul>
                 </div>
+                
                 <button onClick={handleSidebar} className="max-sm:block hidden">
                     <Image src="/sidebar.svg" alt="" width={20} height={2}/>
                 </button>
