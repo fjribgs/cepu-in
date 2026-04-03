@@ -19,12 +19,12 @@ export default function LaporanCards( data:LaporanCardsData ) {
 
               <div className="flex flex-col gap-5 w-full group-hover:px-3.5 transition-all duration-200 ease-in">
                  <div className="flex flex-col">
-                  <h3 className="font-nunito font-bold text-lg">{data.title}</h3>
-                  <p className="text-[13px] font-light text-black/60">{data.description}</p>
+                  <h3 className="font-nunito font-bold text-lg 2xl:text-2xl">{data.title}</h3>
+                  <p className="text-[13px] 2xl:text-[16px] font-light text-black/60">{data.description}</p>
                 </div>
 
                 <div className="flex text-start gap-2">
-                  <p className="font-light text-black/60 text-[13px]">{data.user}</p>
+                  <p className="font-light text-black/60 text-[13px] 2xl:text-[16px]">{data.user}</p>
                 </div>
               </div>
         </Link>
