@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Nunito, Inter } from "next/font/google";
-import "./globals.css";
+import "./../../globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -30,9 +30,7 @@ export default function RootLayout({
       className={`${nunito.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Navbar />  
         {children}
-        <Footer />
       </body>
     </html>
   );

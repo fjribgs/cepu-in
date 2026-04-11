@@ -42,7 +42,7 @@ export default function Navbar() {
                             </li>
                         ))}
                         <div className="2xl:my-1.5">
-                            <Button href="/login" label="Masuk" primary/>
+                            <Button href="/auth/login" label="Masuk" primary/>
                         </div>
                     </ul>
                 </div>
