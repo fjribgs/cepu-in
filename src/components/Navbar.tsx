@@ -4,7 +4,7 @@ import Image from "next/image";
 import Button from "./Button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { use, useState } from "react";
+import { useState, useEffect } from "react";
 import path from "path";
 
 const menuItems = [
@@ -17,12 +17,20 @@ export default function Navbar() {
     const pathname = usePathname();
     const [isSidebarOpened, setSidebarOpened] = useState(false);
 
+    useEffect(() => {
+        setSidebarOpened(false);
+    }, [pathname]);
+
     function handleSidebar() {
         setSidebarOpened(!isSidebarOpened);
     }
 
     return (
         <div>
+            {isSidebarOpened && (
+                <div className="fixed inset-0 z-99 max-sm:block hidden" onClick={() => setSidebarOpened(false)}></div>
+            )}
+            
             <nav className="flex fixed font-nunito bg-white border border-(--color-darker) rounded-[13px] px-5 py-3 justify-between items-center left-12 right-12 max-sm:left-4 max-sm:right-4 mt-5 z-100">
                 <Image src="/logo.svg" width={120} height={40} alt="Logo CepuIn" className="h-auto 2xl:w-40"/>
 
