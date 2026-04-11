@@ -9,9 +9,9 @@ const caraKerjaItems = [
 
 export default function Home() {
   return (
-    <div>
+    <div className="flex flex-col">
 
-      <div className="flex h-screen mx-20 max-sm:mx-10">
+      <div className="flex h-auto min-h-screen mx-20 max-sm:mx-10">
         <div className="flex max-sm:flex-col w-full max-sm:justify-center justify-between items-center gap-15 max-sm:mt-10">
 
           <div className="flex flex-col gap-6 2xl:gap-9">
@@ -31,7 +31,7 @@ export default function Home() {
 
       </div>
 
-      <div id="cara-kerja" className="flex flex-col items-center justify-center h-screen max-sm:h-[120vh] gap-20 max-sm:gap-10 text-center">
+      <div id="cara-kerja" className="flex flex-col items-center justify-center h-auto min-h-screen gap-20 max-sm:gap-10 text-center my-10">
         <div className="flex flex-col items-center gap-2">
           <h2 className="text-5xl 2xl:text-6xl font-nunito font-bold text-(--color-normal-hover)">Cara Kerja</h2>
           <p className="font-light text-md max-sm:text-[12.5px] max-sm:max-w-75 2xl:text-xl">Bantu RT/RW menjaga kenyamanan lingkungan. Hanya dengan tiga langkah!</p>
