@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div className="flex flex-col">
 
-      <div className="flex h-auto min-h-screen mx-20 max-sm:mx-10">
+      <div className="flex h-auto min-h-screen mx-20 max-sm:mx-7">
         <div className="flex max-sm:flex-col w-full max-sm:justify-center justify-between items-center gap-15 max-sm:mt-10">
 
           <div className="flex flex-col gap-6 2xl:gap-9">

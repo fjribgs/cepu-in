@@ -27,7 +27,7 @@ export default async function LaporanPage() {
     console.error(error);
   }
   return (
-    <div className="flex h-auto py-30 items-center mx-20 max-sm:mx-10 2xl:mt-10">
+    <div className="flex h-auto py-30 items-center mx-20 max-sm:mx-6 2xl:mt-10">
       <div className="flex flex-col w-full gap-8">
         <div className="flex justify-between w-full">
           <div className="flex flex-col gap-2">
