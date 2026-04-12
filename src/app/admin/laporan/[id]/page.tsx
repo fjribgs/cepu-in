@@ -1,7 +1,8 @@
-import Image from "next/image";
-import Link from "next/link";
 import { db } from "../../../../../lib/db";
 import { notFound } from "next/navigation";
+import AdminLaporanActions from "@/components/admin/AdminLaporanActions";
+import Link from "next/link";
+import Image from "next/image";
 
 const statusColor: Record<string, string> = {
   Baru: "bg-blue-100 text-blue-600",
@@ -10,19 +11,17 @@ const statusColor: Record<string, string> = {
   Ditolak: "bg-red-100 text-red-600",
 };
 
-export default async function LaporanID({
+export default async function AdminDetailLaporan({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  console.log("ID:", id);
+
   const laporan = await db.laporan.findUnique({
     where: { id },
     include: {
-      user: {
-        select: { nama: true, username: true },
-      },
+      user: { select: { nama: true, username: true } },
     },
   });
 
@@ -34,74 +33,58 @@ export default async function LaporanID({
     year: "numeric",
   });
 
-  console.log("fotoAfter:", JSON.stringify(laporan.fotoAfter));
-
   return (
-    <div className="flex flex-col px-20 pt-35 pb-10 max-sm:px-5 gap-8">
-      {/* Kembali */}
-      <Link href="/laporan" className="flex items-center gap-2 text-sm w-fit">
+    <div className="flex flex-col px-10 pt-10 pb-10 gap-8">
+      {/* Header */}
+      <Link
+        href="/admin/laporan"
+        className="flex items-center gap-2 text-sm w-fit hover:opacity-70 transition-all"
+      >
         <Image src="/auth/back.svg" width={20} height={20} alt="back" />
         Kembali
       </Link>
+      <div className="flex flex-col w-fit">
+        <h1 className="font-nunito font-bold text-3xl">Detail Laporan</h1>
+        <div className="h-[2px] bg-gray-300" />
+      </div>
 
       {/* Content */}
-      <div className="flex gap-16 max-md:flex-col">
-        {/* Kiri */}
+      <div className="flex gap-10 max-lg:flex-col">
+        {/* Kiri - Detail Laporan */}
         <div className="flex flex-col gap-4 w-full">
-          {/* Foto Before & After berdampingan */}
+          {/* Foto */}
           <div className="flex gap-3">
-            {/* Foto Before */}
             <div className="flex flex-col gap-2 w-full">
               <span className="text-xs font-medium text-gray-400">Sebelum</span>
-              <div className="relative w-full aspect-[3/2] rounded-2xl overflow-hidden">
-                <Image
+              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden">
+                <img
                   src={laporan.fotoBefore!}
                   alt="Foto sebelum"
-                  fill
-                  className="object-cover"
+                  className="w-full h-full object-cover"
                 />
               </div>
             </div>
-            {/* Foto After */}
             <div className="flex flex-col gap-2 w-full">
               <span className="text-xs font-medium text-gray-400">Sesudah</span>
-              {laporan.fotoAfter && laporan.fotoAfter !== "" ? (
-                <div className="relative w-full aspect-[3/2] rounded-2xl overflow-hidden">
-                  <Image
+              {laporan.fotoAfter ? (
+                <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden">
+                  <img
                     src={laporan.fotoAfter}
                     alt="Foto sesudah"
-                    fill
-                    className="object-cover"
+                    className="w-full h-full object-cover"
                   />
                 </div>
               ) : (
-                <div className="w-full aspect-[3/2] rounded-2xl bg-gray-200 flex items-center justify-center">
+                <div className="w-full aspect-[4/3] rounded-2xl bg-gray-200 flex items-center justify-center">
                   <p className="text-gray-400 text-xs font-medium text-center px-4">
                     Belum ada foto sesudah
                   </p>
                 </div>
               )}
             </div>
-          </div>{" "}
-          <h1 className="font-nunito font-bold text-3xl 2xl:text-4xl">
-            {laporan.judul}
-          </h1>
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-(--color-normal) flex items-center justify-center">
-              <span className="text-white font-bold text-sm">
-                {laporan.user.nama.charAt(0).toUpperCase()}
-              </span>
-            </div>{" "}
-            <div className="flex flex-col">
-              <span className="font-medium text-sm">{laporan.user.nama}</span>
-              <span className="text-xs text-gray-400">{tanggal}</span>
-            </div>
           </div>
-        </div>
 
-        {/* Kanan */}
-        <div className="flex flex-col gap-6 w-full">
-          {/* Badge status & kategori */}
+          {/* Info */}
           <div className="flex gap-2 flex-wrap">
             <span
               className={`text-xs font-medium px-3 py-1 rounded-full ${statusColor[laporan.status]}`}
@@ -118,18 +101,33 @@ export default async function LaporanID({
             )}
           </div>
 
-          {/* Deskripsi */}
-          <div className="flex flex-col gap-2">
-            <h2 className="font-nunito font-bold text-2xl 2xl:text-3xl">
-              Deskripsi
-            </h2>
-            <p className="text-sm 2xl:text-base leading-relaxed text-gray-700">
-              {laporan.deskripsi}
-            </p>
+          <h1 className="font-nunito font-bold text-3xl">{laporan.judul}</h1>
+          <p className="text-sm leading-relaxed text-gray-700">
+            {laporan.deskripsi}
+          </p>
+
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full bg-(--color-normal) flex items-center justify-center">
+              <span className="text-white font-bold text-sm">
+                {laporan.user.nama.charAt(0).toUpperCase()}
+              </span>
+            </div>
+            <div className="flex flex-col">
+              <span className="font-medium text-sm">{laporan.user.nama}</span>
+              <span className="text-xs text-gray-400">{tanggal}</span>
+            </div>
           </div>
+        </div>
+
+        {/* Kanan - Form Admin */}
+        <div className="w-full max-w-[350px] max-lg:max-w-full">
+          <AdminLaporanActions
+            id={laporan.id}
+            currentStatus={laporan.status}
+            currentKredibel={laporan.kredibel}
+          />
         </div>
       </div>
     </div>
   );
 }
-
