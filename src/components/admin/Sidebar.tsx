@@ -7,10 +7,20 @@ import path from "path"
 
 
 const SidebarLinks = [
-    { id: 1, label: "Beranda", icon: "/admin/beranda.svg", href: "/admin/beranda"},
-    { id: 2, label: "Laporan", icon: "/admin/laporan.svg", href: "/admin/laporan"},
-    { id: 3, label: "Akun", icon: "/admin/akun.svg", href: "/admin/akun"}
-]
+  {
+    id: 1,
+    label: "Beranda",
+    icon: "/admin/beranda.svg",
+    href: "/admin/beranda",
+  },
+  {
+    id: 2,
+    label: "Laporan",
+    icon: "/admin/laporan.svg",
+    href: "/admin/laporan",
+  },
+  { id: 3, label: "Akun", icon: "/admin/akun.svg", href: "/admin/akun" },
+];
 
 export default function DashboardSidebar() {
     const pathName = usePathname()

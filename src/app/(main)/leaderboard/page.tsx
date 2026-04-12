@@ -16,7 +16,7 @@ export default async function Leaderboard() {
   let leaderboard: LeaderboardEntry[] = [];
 
   try {
-    leaderboard = await db.Leaderboard.findMany({
+    leaderboard = await db.leaderboard.findMany({
       orderBy: { totalPoin: "desc" },
       include: {
         user: {
@@ -31,7 +31,6 @@ export default async function Leaderboard() {
   return (
     <div className="flex h-auto py-30 items-center mx-20 max-sm:mx-10 2xl:mt-10">
       <div className="flex flex-col w-full gap-8">
-
         {/* Title */}
         <div className="flex justify-between w-full">
           <div className="flex flex-col gap-2">
@@ -64,8 +63,8 @@ export default async function Leaderboard() {
             </li>
           ))}
         </ul>
-
       </div>
     </div>
   );
 }
+
