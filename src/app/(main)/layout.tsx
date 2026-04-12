@@ -25,15 +25,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
+    <div
       lang="en"
       className={`${nunito.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <div className="min-h-full flex flex-col">
         <NavbarWrapper />
         {children}
         <Footer />
-      </body>
-    </html>
+      </div>
+    </div>
   );
 }
