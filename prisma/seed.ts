@@ -17,6 +17,12 @@ const db = new PrismaClient({
 async function main() {
   console.log("Seeding...");
 
+  // Hapus data lama (urutan sesuai relasi FK)
+  await db.laporan.deleteMany();
+  await db.leaderboard.deleteMany();
+  await db.user.deleteMany();
+  console.log("Data lama dihapus.");
+
   // Hash password
   const hashedAdmin = await bcrypt.hash("admin123", 10);
   const hashedWarga = await bcrypt.hash("warga123", 10);
@@ -161,6 +167,56 @@ async function main() {
         status: Status.Proses,
         kredibel: true,
         userId: warga3.id,
+      },
+      {
+        judul: "Kabel listrik terkelupas",
+        deskripsi:
+          "Kabel listrik di tiang dekat pos ronda terkelupas dan rawan hubung pendek saat hujan",
+        kategori: Kategori.Listrik,
+        fotoBefore: "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+        status: Status.Baru,
+        kredibel: true,
+        userId: warga1.id,
+      },
+      {
+        judul: "Selokan penuh lumpur",
+        deskripsi:
+          "Selokan di samping jalan utama RT penuh lumpur dan sampah sehingga air tidak mengalir",
+        kategori: Kategori.Kebersihan,
+        fotoBefore: "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+        status: Status.Proses,
+        kredibel: true,
+        userId: warga2.id,
+      },
+      {
+        judul: "Pagar taman rusak",
+        deskripsi:
+          "Pagar taman bermain anak-anak patah di beberapa titik sehingga berbahaya",
+        kategori: Kategori.Bangunan,
+        fotoBefore: "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+        status: Status.Baru,
+        kredibel: false,
+        userId: warga3.id,
+      },
+      {
+        judul: "Lampu gang tidak menyala",
+        deskripsi:
+          "Lampu penerangan di gang 5 sudah tidak menyala selama 3 hari, warga merasa tidak aman",
+        kategori: Kategori.Keamanan,
+        fotoBefore: "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+        status: Status.Selesai,
+        kredibel: true,
+        userId: warga1.id,
+      },
+      {
+        judul: "Pohon tumbang menghalangi jalan",
+        deskripsi:
+          "Pohon besar tumbang setelah angin kencang dan menghalangi akses jalan masuk RT",
+        kategori: Kategori.Keamanan,
+        fotoBefore: "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+        status: Status.Ditolak,
+        kredibel: false,
+        userId: warga2.id,
       },
     ],
   });
