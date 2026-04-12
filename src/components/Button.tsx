@@ -3,7 +3,8 @@ import Image from "next/image";
 
 interface ButtonData {
   href?: string;
-  label: string;
+  label?: string;
+  showLabel?: boolean;
   primary?: boolean;
   showIcon?: boolean;
   icon?: string;
@@ -15,6 +16,7 @@ interface ButtonData {
 export default function Button({
   href,
   label,
+  showLabel=false,
   icon = "",
   primary = false,
   showIcon = false,
@@ -22,7 +24,7 @@ export default function Button({
   onClick,
   type = "button",
 }: ButtonData) {
-  const className = `flex gap-2 ${primary ? "bg-(--color-normal) hover:bg-(--color-normal-hover) text-white" : "bg-white hover:bg-(--color-light) text-(--color-normal) border border-(--color-normal)"} px-4 py-2 2xl:px-6 2xl:py-3 rounded-4xl transition-all duration-150 justify-center items-center font-medium text-[14.5px] max-sm:text-[12px] 2xl:text-[20px]`;
+  const className = `flex cursor-pointer gap-2 ${primary ? "bg-(--color-normal) hover:bg-(--color-normal-hover) text-white" : "bg-white hover:bg-(--color-light) text-(--color-normal) border border-(--color-normal)"} px-4 py-2 2xl:px-6 2xl:py-3 rounded-4xl transition-all duration-150 justify-center items-center font-medium text-[14.5px] max-sm:text-[12px] 2xl:text-[20px]`;
 
   if (onClick || !href) {
     return (
@@ -34,7 +36,7 @@ export default function Button({
           height={18}
           className={`${showIcon ? "block" : "hidden"} 2xl:w-7`}
         />
-        {label}
+        <span className={`${showLabel} ? "block": "hidden"`}>{label}</span>
       </button>
     );
   }
@@ -48,7 +50,7 @@ export default function Button({
         height={18}
         className={`${showIcon ? "block" : "hidden"} 2xl:w-7`}
       />
-      {label}
+      <span className={`${showLabel} ? "block": "hidden"`}>{label}</span>
     </Link>
   );
 }

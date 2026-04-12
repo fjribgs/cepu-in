@@ -1,9 +1,21 @@
-export default function Akun() {
-    return (
-        <div className="">
-            <h1 className="font-nunito font-bold text-(--color-normal) text-3xl">Kelola Akun</h1>
+import { db } from "../../../../lib/db";
+import AkunList from "@/components/admin/AkunList";
 
-            <div className="w-full bg-black/20 h-0.5"></div>
-        </div>
-    )
+type AkunEntry = {
+    id: string;
+    nama: string;
+}
+
+export default async function Akun() {
+    let listAkun: AkunEntry[] = [];
+    
+    try {
+        listAkun = await db.user.findMany({
+            orderBy: { nama: "desc" },
+        }) as AkunEntry[];
+    } catch (error) {
+        console.error("Akun tidak ditemukan")
+    }
+    
+    return <AkunList listAkun={listAkun} />;
 }

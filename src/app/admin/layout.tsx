@@ -25,11 +25,11 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-full flex">
+    <div className="min-h-full flex w-full">
       <Suspense fallback={<div className="w-55" />}>
         <DashboardSidebar />
       </Suspense>
-      <div className="ml-55 px-10 pt-10">
+      <div className="ml-55 px-10 pt-10 flex-1">
         {children}
       </div>
     </div>

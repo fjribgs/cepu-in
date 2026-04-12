@@ -3,7 +3,6 @@
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import path from "path"
 
 
 const SidebarLinks = [
@@ -13,7 +12,7 @@ const SidebarLinks = [
 ]
 
 export default function DashboardSidebar() {
-    const pathName = usePathname()
+    const pathName = usePathname();
 
     return (
         <aside className="fixed flex flex-col w-auto min-w-55 h-screen bg-(--color-light) justify-between items-center py-6">
