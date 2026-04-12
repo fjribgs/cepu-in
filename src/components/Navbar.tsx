@@ -101,7 +101,7 @@ export default function Navbar({ session }: { session: Session }) {
 
       {/* Mobile Sidebar */}
       <div
-        className={`border bg-white flex-col gap-5 fixed right-4 rounded-lg top-25 px-3 py-3 hidden max-sm:flex transition-all duration-200 ease-in ${isSidebarOpened ? "translate-x-0" : "translate-x-full"}`}
+        className={`border bg-white z-99 flex-col gap-5 fixed right-4 rounded-lg top-25 px-3 py-3 hidden max-sm:flex transition-all duration-200 ease-in ${isSidebarOpened ? "translate-x-0" : "translate-x-full"}`}
       >
         <ul className="flex flex-col gap-2">
           {menuItems.map((item) => (
