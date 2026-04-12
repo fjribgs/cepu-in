@@ -21,7 +21,9 @@ export default function AkunList({ listAkun }: { listAkun: AkunEntry[] }) {
                     <h1 className="font-nunito font-bold text-(--color-normal) text-3xl">Kelola Akun</h1>
                     <div className="w-full bg-black/20 h-0.5"></div>
                 </div>
-                <Button showLabel label="Buat Akun" showIcon icon="admin/add.svg"/>
+                <Link href={`/admin/akun/buat-akun`}>
+                    <Button showLabel label="Buat Akun" showIcon icon="admin/add.svg"/>
+                </Link>
             </div>
 
             <div className="grid grid-cols-2 max-lg:grid-cols-1 gap-x-10 gap-y-6 w-full">
